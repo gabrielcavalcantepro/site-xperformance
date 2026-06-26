@@ -775,7 +775,7 @@ button { font-family: inherit; }
   text-transform: uppercase;
 }
 
-.founder-content-col { padding-top: 8px; }
+.founder-content-col { padding-top: 8px; flex: 1; min-width: 0; }
 .founder-accent-label {
   display: block;
   font-size: 11px;
@@ -1338,27 +1338,31 @@ button { font-family: inherit; }
 .hscroll-track .section-about { padding: 48px 0; }
 .hscroll-track .about-quote { margin-bottom: 0; }
 
-/* Founder panels: top-aligned with consistent padding so both photos share same Y */
+/* Founder panels: vertically centered */
 .hscroll-track .section-founders {
-  align-items: flex-start;
-  padding: 14vh 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
-/* Vertical layout: photo on top, text below */
+/* Horizontal layout: photo on left, text on right */
 .hscroll-track .founder-block {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   margin-bottom: 0;
-  gap: 24px;
-  max-width: 560px;
+  gap: 56px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
 }
-/* Portrait photo: fixed height so both panels have identical photo size */
+/* Portrait photo: larger and fixed so both panels have identical photo size */
 .hscroll-track .photo-placeholder {
   aspect-ratio: 3/4;
-  height: 300px;
+  height: 460px;
   width: auto;
+  flex-shrink: 0;
 }
 .about-panel-inner {
   max-width: 720px;
@@ -1486,7 +1490,13 @@ button { font-family: inherit; }
     padding: 0;
     overflow-y: auto;
   }
-  .hscroll-track .photo-placeholder { height: clamp(280px, 45vh, 400px); }
+  .hscroll-track .founder-block {
+    flex-direction: column;
+    gap: 24px;
+    max-width: 560px;
+  }
+  .hscroll-track .founder-photo-col { display: block; width: 100%; }
+  .hscroll-track .photo-placeholder { width: auto; height: clamp(260px, 42vh, 340px); aspect-ratio: 3/4; flex-shrink: unset; }
 
   /* Floating WPP */
   .wpp-float-text { display: none; }
