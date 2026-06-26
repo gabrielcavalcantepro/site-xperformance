@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="X Performance Digital — Sistema de crescimento de receita para PMEs e negócios locais. Tráfego, UI/UX Design, desenvolvimento, SEO/GEO e automação com IA integrados em um sistema único.">
+  <title>X Performance Digital — Sistema de Performance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== INTRO OVERLAY ===== -->
+  <div id="intro-overlay" aria-hidden="true">
+    <div id="intro-logo-wrap">
+      <svg class="intro-svg" viewBox="0 0 1000 646" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-label="Logo X Performance Digital">
+        <defs>
+          <!-- Glow suave aplicado ao flash de luz no contorno -->
+          <filter id="outline-glow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <!-- Gradiente diagonal animado: varre de fora-TL até fora-BR.
+               Aplicado como stroke (não fill), então só aparece no contorno. -->
+          <linearGradient id="outline-shimmer" gradientUnits="userSpaceOnUse"
+                          x1="-1000" y1="-646" x2="0" y2="0">
+            <stop offset="0%"   stop-color="#fff" stop-opacity="0"/>
+            <stop offset="36%"  stop-color="#fff" stop-opacity="0"/>
+            <stop offset="45%"  stop-color="#ffe566" stop-opacity="0.7"/>
+            <stop offset="50%"  stop-color="#ffffff"  stop-opacity="1"/>
+            <stop offset="55%"  stop-color="#ffe566" stop-opacity="0.7"/>
+            <stop offset="64%"  stop-color="#fff" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+            <animate attributeName="x1" from="-1000" to="1000" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="y1" from="-646"  to="646"  dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="x2" from="0"     to="2000" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="y2" from="0"     to="1292" dur="3s" repeatCount="indefinite"/>
+          </linearGradient>
+        </defs>
+
+        <!-- 1. Preenchimento amarelo (scroll-driven: opacity 0 → 1) -->
+        <path class="intro-fill" fill="#fad214"
+              d="M534.395 275.284L-1 645.292L408.758 278.067C419.734 268.23 420.793 251.408 411.137 240.272L285.716 95.6339C280.663 89.8063 284.802 80.7377 292.516 80.7377H376.818C386.961 80.7377 396.633 85.0164 403.456 92.5215L538.337 240.891C547.698 251.187 545.842 267.372 534.395 275.284Z"/>
+        <path class="intro-fill" fill="#fad214"
+              d="M464.605 370.364L1000 0.356323L590.242 367.581C579.266 377.418 578.207 394.24 587.863 405.376L713.284 550.014C718.337 555.842 714.198 564.91 706.484 564.91H622.182C612.039 564.91 602.367 560.632 595.544 553.127L460.663 404.757C451.302 394.461 453.158 378.276 464.605 370.364Z"/>
+
+        <!-- 2. Contorno estático sólido (acima do fill, sempre visível) -->
+        <path class="outline-ghost" fill="none" stroke="#3d3d3d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              d="M534.395 275.284L-1 645.292L408.758 278.067C419.734 268.23 420.793 251.408 411.137 240.272L285.716 95.6339C280.663 89.8063 284.802 80.7377 292.516 80.7377H376.818C386.961 80.7377 396.633 85.0164 403.456 92.5215L538.337 240.891C547.698 251.187 545.842 267.372 534.395 275.284Z"/>
+        <path class="outline-ghost" fill="none" stroke="#3d3d3d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              d="M464.605 370.364L1000 0.356323L590.242 367.581C579.266 377.418 578.207 394.24 587.863 405.376L713.284 550.014C718.337 555.842 714.198 564.91 706.484 564.91H622.182C612.039 564.91 602.367 560.632 595.544 553.127L460.663 404.757C451.302 394.461 453.158 378.276 464.605 370.364Z"/>
+
+        <!-- 3. Flash de luz no contorno (gradiente animado no stroke — não toca o fill) -->
+        <path class="shimmer-path" fill="none" stroke="url(#outline-shimmer)" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round" filter="url(#outline-glow)"
+              d="M534.395 275.284L-1 645.292L408.758 278.067C419.734 268.23 420.793 251.408 411.137 240.272L285.716 95.6339C280.663 89.8063 284.802 80.7377 292.516 80.7377H376.818C386.961 80.7377 396.633 85.0164 403.456 92.5215L538.337 240.891C547.698 251.187 545.842 267.372 534.395 275.284Z"/>
+        <path class="shimmer-path" fill="none" stroke="url(#outline-shimmer)" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round" filter="url(#outline-glow)"
+              d="M464.605 370.364L1000 0.356323L590.242 367.581C579.266 377.418 578.207 394.24 587.863 405.376L713.284 550.014C718.337 555.842 714.198 564.91 706.484 564.91H622.182C612.039 564.91 602.367 560.632 595.544 553.127L460.663 404.757C451.302 394.461 453.158 378.276 464.605 370.364Z"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-pill">
+      <div class="nav-left">
+        <a href="#" class="nav-logo">
+          <img src="assets/logo-2048x513.webp" alt="X Performance Digital" class="nav-logo-img">
+        </a>
+      </div>
+
+      <div class="nav-center">
+        <a href="#solucoes" class="nav-link">Soluções</a>
+        <a href="#sobre" class="nav-link">A X Performance</a>
+        <a href="#fundadores" class="nav-link">Fundadores</a>
+        <a href="#atributos" class="nav-link">Atributos</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </div>
+
+      <div class="nav-right">
+        <a href="https://wa.me/5585988405521" target="_blank" rel="noopener" class="btn-wpp-nav">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+    <button class="mobile-close" id="mobileClose" aria-label="Fechar menu">✕</button>
+    <nav class="mobile-menu-links">
+      <a href="#solucoes" class="mobile-link">Soluções</a>
+      <a href="#sobre" class="mobile-link">A X Performance</a>
+      <a href="#fundadores" class="mobile-link">Fundadores</a>
+      <a href="#atributos" class="mobile-link">Atributos</a>
+      <a href="#cases" class="mobile-link">Cases</a>
+      <a href="#contato" class="mobile-link">Contato</a>
+      <a href="https://wa.me/5585988405521" target="_blank" rel="noopener" class="mobile-wpp">
+        WhatsApp — (85) 9 8840-5521
+      </a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ===== SEÇÃO 02 — HERO ===== -->
+    <!-- Wrapper sticky: cria espaço de scroll para a overlay (180vh = 80vh animação + 100vh dwell) -->
+    <!-- A hero fica travada no topo enquanto a overlay anima; quando a overlay some a hero está atrás -->
+    <div class="hero-sticky-wrapper">
+    <section id="hero" class="section-hero">
+      <div class="hero-glow"></div>
+      <!-- ELEMENTO GRÁFICO: inserir imagem/animação de fundo aqui se desejar -->
+      <div class="container hero-content animate-on-scroll">
+        <h1 class="hero-headline">
+          Marketing que coloca <span class="accent">resultado</span> no caixa do empreendedor.
+        </h1>
+        <p class="hero-sub">
+          Para PMEs e negócios locais. Tráfego, UI/UX Design, desenvolvimento, SEO/GEO e automação com IA integrados em um sistema único.
+        </p>
+        <div class="hero-btns">
+          <a href="#contato" class="btn-primary">Quero o diagnóstico gratuito →</a>
+          <a href="#solucoes" class="btn-secondary">Ver como a gente trabalha</a>
+        </div>
+        <p class="hero-trust-line">Sem cobrança. Sem proposta automática. Se não fizer sentido, a gente diz.</p>
+      </div>
+    </section>
+    </div><!-- /hero-sticky-wrapper -->
+
+    <!-- ===== SEÇÃO 03 — CLIENTES / MARQUEE ===== -->
+    <section id="clientes" class="section-clients">
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <img src="assets/logos/BW-Outlet.webp" alt="BW Outlet" class="client-logo-img">
+          <img src="assets/logos/Ativo-1.webp" alt="Inux" class="client-logo-img">
+          <img src="assets/logos/Prancheta-1-copia-10@3x-scaled.webp" alt="TableGrill" class="client-logo-img">
+          <img src="assets/logos/Georgia.webp" alt="Georgia" class="client-logo-img">
+          <img src="assets/logos/Spazzio.webp" alt="Spazzio" class="client-logo-img">
+          <img src="assets/logos/Mafra.webp" alt="Mafra" class="client-logo-img">
+          <img src="assets/logos/Hex03.webp" alt="HEX03" class="client-logo-img">
+          <img src="assets/logos/Sasso.webp" alt="Sasso" class="client-logo-img">
+          <img src="assets/logos/CMGB.webp" alt="CMGB" class="client-logo-img">
+          <img src="assets/logos/Trio.webp" alt="Trio" class="client-logo-img">
+          <img src="assets/logos/Acordfacil.webp" alt="Acordfácil" class="client-logo-img">
+          <!-- Duplicado para loop sem emenda -->
+          <img src="assets/logos/BW-Outlet.webp" alt="BW Outlet" class="client-logo-img">
+          <img src="assets/logos/Ativo-1.webp" alt="Inux" class="client-logo-img">
+          <img src="assets/logos/Prancheta-1-copia-10@3x-scaled.webp" alt="TableGrill" class="client-logo-img">
+          <img src="assets/logos/Georgia.webp" alt="Georgia" class="client-logo-img">
+          <img src="assets/logos/Spazzio.webp" alt="Spazzio" class="client-logo-img">
+          <img src="assets/logos/Mafra.webp" alt="Mafra" class="client-logo-img">
+          <img src="assets/logos/Hex03.webp" alt="HEX03" class="client-logo-img">
+          <img src="assets/logos/Sasso.webp" alt="Sasso" class="client-logo-img">
+          <img src="assets/logos/CMGB.webp" alt="CMGB" class="client-logo-img">
+          <img src="assets/logos/Trio.webp" alt="Trio" class="client-logo-img">
+          <img src="assets/logos/Acordfacil.webp" alt="Acordfácil" class="client-logo-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO 04 — SOLUÇÕES ===== -->
+    <section id="solucoes" class="section-solutions section-solutions--dark">
+      <div class="container">
+        <h2 class="section-headline animate-on-scroll">
+          Cinco frentes. Um sistema integrado.
+        </h2>
+        <p class="section-sub animate-on-scroll">
+          Cada uma resolve uma etapa do crescimento: entender o cliente, montar a
+          oferta, atrair e converter. O resultado aparece quando elas trabalham juntas,
+          dentro de um mesmo sistema.
+        </p>
+
+        <div class="solutions-grid">
+          <!-- Card 1 -->
+          <div class="solution-card animate-on-scroll">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg>
+              </div>
+            </div>
+            <h3 class="card-title">Tráfego Pago</h3>
+            <p class="card-desc">Um fluxo constante de leads qualificados no Google, Meta e YouTube Ads, no volume que o seu comercial consegue atender.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="solution-card animate-on-scroll">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><line x1="8" y1="8" x2="8" y2="17"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+            </div>
+            <h3 class="card-title">UI/UX Design</h3>
+            <p class="card-desc">Interfaces que convertem, para web e celular, desenhadas a partir do funil de vendas e da jornada de quem compra.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="solution-card animate-on-scroll">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+            </div>
+            <h3 class="card-title">Desenvolvimento Web</h3>
+            <p class="card-desc">Sites e landing pages de alto padrão que carregam rápido, ranqueiam e vendem.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="solution-card animate-on-scroll">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+            </div>
+            <h3 class="card-title">SEO / GEO</h3>
+            <p class="card-desc">Sua empresa encontrada no Google e nas respostas das IAs, com tráfego orgânico que não depende de mídia paga.</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="solution-card animate-on-scroll">
+            <div class="card-top">
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 14h.01M15 14h.01M9 17.5h6"/><path d="M12 8V5"/><circle cx="12" cy="3.5" r="1.5"/></svg>
+              </div>
+            </div>
+            <h3 class="card-title">IA + CRM + Automação</h3>
+            <p class="card-desc">Pipeline organizado, follow-up automático e agentes de IA no operacional repetitivo. Lead não se perde por falta de processo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SCROLL HORIZONTAL: A X Performance + Fundadores ===== -->
+    <div class="hscroll-wrapper" id="sobre">
+      <div class="hscroll-track">
+        <div class="hscroll-inner">
+
+        <!-- Panel 1: A X Performance -->
+        <section class="section-about horizontal-panel">
+          <div class="container about-panel-inner">
+            <h2 class="section-headline dark-heading animate-on-scroll">
+              Não somos uma agência de marketing comum.
+            </h2>
+            <p class="section-text-body animate-on-scroll">
+              A maioria das agências entrega trabalho solto — uma campanha aqui, um conteúdo ali — e some depois que o contrato é assinado. A X Performance trabalha o conjunto: entender o cliente, montar a oferta, atrair e converter, tudo conectado. Por isso a relação dura anos. O que segura o cliente é o resultado, não o contrato.
+            </p>
+            <blockquote class="about-quote animate-on-scroll">
+              "A gente fala quando não somos o caminho certo. E quando somos, o resultado aparece no caixa."
+            </blockquote>
+          </div>
+        </section>
+
+        <!-- Panel 2: Fundador — Isaque Rodrigues -->
+        <section class="section-founders horizontal-panel" id="fundadores">
+          <div class="container founder-panel-inner">
+            <div class="founder-block animate-on-scroll">
+              <div class="founder-photo-col">
+                <div class="photo-placeholder">
+                  <span class="photo-icon">📷</span>
+                  <span class="photo-label">FOTO ISAQUE</span>
+                </div>
+              </div>
+              <div class="founder-content-col">
+                <h3 class="founder-headline">Isaque Rodrigues</h3>
+                <p class="founder-body">Empreendedor, Co-fundador da Plataforma X Performance e Novo Digital, Especialista em Marketing Digital, graduado em Marketing com várias especializações em Gestão de Projetos e Desenvolvimento Humano.</p>
+                <p class="founder-body">Em 2017 criou um Método que já elevou o faturamento de centenas de empresas no Brasil e em 2 continentes do mundo dentro do mercado varejista e criando metodologias para profissionais de diversos nichos.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 3: Fundadora — Girlene Rodrigues -->
+        <section class="section-founders horizontal-panel">
+          <div class="container founder-panel-inner">
+            <div class="founder-block animate-on-scroll">
+              <div class="founder-photo-col">
+                <div class="photo-placeholder">
+                  <span class="photo-icon">📷</span>
+                  <span class="photo-label">FOTO GIRLENE</span>
+                </div>
+              </div>
+              <div class="founder-content-col">
+                <h3 class="founder-headline">Girlene Rodrigues</h3>
+                <p class="founder-body">Especialista em Gestão de Pessoas, há 10 anos atua na área de liderança e desenvolvimento realizando consultorias e mentorias profissionais.</p>
+                <p class="founder-body">Analista de Perfil Comportamental e Especialista em Recrutamento e Seleção. Coaching de Carreira.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        </div><!-- /hscroll-inner -->
+      </div><!-- /hscroll-track -->
+    </div><!-- /hscroll-wrapper -->
+
+    <!-- ===== SEÇÃO 07 — ATRIBUTOS (CLARA) ===== -->
+    <section id="atributos" class="section-attributes">
+      <div class="container">
+        <h2 class="section-headline dark-heading animate-on-scroll">
+          Como a X Performance trabalha.
+        </h2>
+        <p class="section-sub-dark animate-on-scroll">
+          Cinco traços que aparecem em toda conversa, todo projeto, toda entrega.
+        </p>
+
+        <div class="attributes-grid">
+          <div class="attribute-card animate-on-scroll">
+            <span class="attr-number">01</span>
+            <h3 class="attr-title">Observa antes de falar</h3>
+            <p class="attr-desc">Escuta com atenção de verdade, para entender o seu contexto antes de propor qualquer coisa.</p>
+          </div>
+          <div class="attribute-card animate-on-scroll">
+            <span class="attr-number">02</span>
+            <h3 class="attr-title">Confronta com respeito</h3>
+            <p class="attr-desc">Questiona planos e desafia certezas, sempre com cuidado, nunca com arrogância.</p>
+          </div>
+          <div class="attribute-card animate-on-scroll">
+            <span class="attr-number">03</span>
+            <h3 class="attr-title">Profunda além do esperado</h3>
+            <p class="attr-desc">Conhece a fundo marketing, tecnologia e operação — mais áreas do que costuma aparentar.</p>
+          </div>
+          <div class="attribute-card animate-on-scroll">
+            <span class="attr-number">04</span>
+            <h3 class="attr-title">Humana e presente</h3>
+            <p class="attr-desc">Reconhece o esforço de quem empreende e dá atenção total a cada conversa.</p>
+          </div>
+          <div class="attribute-card animate-on-scroll">
+            <span class="attr-number">05</span>
+            <h3 class="attr-title">Prova antes de proclamar</h3>
+            <p class="attr-desc">Não anuncia o que é. Mostra pelo que entrega, com resultado que dá para acompanhar e medir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO 08 — EM NÚMEROS ===== -->
+    <section id="numeros" class="section-numbers">
+      <div class="numbers-glow"></div>
+      <div class="container">
+        <h2 class="section-headline animate-on-scroll">O que sustenta o discurso.</h2>
+        <div class="stats-grid animate-on-scroll" id="statsGrid">
+          <div class="stat-item">
+            <div class="stat-number">+<span class="counter" data-target="15">0</span></div>
+            <p class="stat-desc">anos de experiência acumulada</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">+<span class="counter" data-target="100">0</span></div>
+            <p class="stat-desc">marcas e negócios atendidos</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">+<span class="counter" data-target="10">0</span></div>
+            <p class="stat-desc">estados do Brasil com clientes ativos</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="5">0</span></div>
+            <p class="stat-desc">frentes integradas em um sistema</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO 09 — CASES ===== -->
+    <section id="cases" class="section-cases">
+      <div class="container">
+        <h2 class="section-headline animate-on-scroll">
+          Resultado que aparece<br>no caixa.
+        </h2>
+        <p class="section-sub animate-on-scroll">
+          Não falamos do que fazemos. Mostramos o que entregamos.
+        </p>
+
+        <div class="cases-grid">
+          <div class="case-card animate-on-scroll">
+            <!-- INSERIR LOGO BW OUTLET AQUI -->
+            <div class="case-logo-placeholder">LOGO: BW Outlet</div>
+            <div class="case-result">+300%</div>
+            <p class="case-result-sub">em vendas</p>
+            <div class="case-divider"></div>
+            <p class="case-text">Saímos de um canal de vendas e fomos para 3 canais com crescimento de mais de 300% em vendas. Desenvolvemos estratégias internas para movimentar a marca e um time de marketing focado em mídias sociais.</p>
+          </div>
+          <div class="case-card animate-on-scroll">
+            <!-- INSERIR LOGO INUX AQUI -->
+            <div class="case-logo-placeholder">LOGO: Inux</div>
+            <div class="case-result">CRM + Time</div>
+            <p class="case-result-sub">estruturado do zero</p>
+            <div class="case-divider"></div>
+            <p class="case-text">Criamos processos de vendas dentro do CRM para acompanhar todos os indicadores de conversão. Mais de 70 colaboradores com canais de mídia criados do zero.</p>
+          </div>
+          <div class="case-card animate-on-scroll">
+            <!-- INSERIR LOGO TABLEGRILL AQUI -->
+            <div class="case-logo-placeholder">LOGO: TableGrill</div>
+            <div class="case-result">R$280k→R$780k</div>
+            <p class="case-result-sub">faturamento em 12 meses</p>
+            <div class="case-divider"></div>
+            <p class="case-text">Faturamento triplicado em doze meses. Criamos as estratégias para entrada da marca nos marketplaces, integrando departamentos de vendas aos PDVs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO 10 — DIAGNÓSTICO / CONTATO ===== -->
+    <section id="contato" class="section-contact">
+      <div class="contact-glow"></div>
+      <div class="container contact-layout">
+        <!-- Coluna esquerda -->
+        <div class="contact-copy animate-on-scroll">
+          <h2 class="contact-headline">Diagnóstico<br>gratuito.</h2>
+          <p class="contact-body">
+            Sem cobrança. A gente entende o seu cenário, aponta o gargalo e diz com honestidade se faz sentido trabalhar junto. Se não fizer, você sai com clareza mesmo assim.
+          </p>
+          <div class="contact-specs">
+            <div class="spec-row">
+              <span class="spec-key">30 min</span>
+              <span class="spec-arrow">→</span>
+              <span class="spec-val">Tempo total da conversa</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Sem cobrança</span>
+              <span class="spec-arrow">→</span>
+              <span class="spec-val">Não faz sentido? A gente diz.</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">1 dia útil</span>
+              <span class="spec-arrow">→</span>
+              <span class="spec-val">Tempo de resposta</span>
+            </div>
+          </div>
+          <p class="contact-wpp-alt">
+            Ou fale direto no WhatsApp:
+            <a href="https://wa.me/5585988405521" target="_blank" rel="noopener" class="wpp-link">(85) 9 8840-5521</a>
+          </p>
+        </div>
+
+        <!-- Coluna direita: formulário -->
+        <div class="contact-form-wrap animate-on-scroll">
+          <div class="form-header">
+            <span class="form-label-tag">FORM · 06 CAMPOS</span>
+            <span class="form-time-badge">≤ 2 min</span>
+          </div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="nome">NOME <span class="req">*</span></label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+              <span class="field-error" id="erroNome"></span>
+            </div>
+            <div class="form-group">
+              <label for="whatsapp">WHATSAPP <span class="req">*</span></label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 0 0000-0000" required autocomplete="tel">
+              <span class="field-error" id="erroWhatsapp"></span>
+            </div>
+            <div class="form-group">
+              <label for="empresa">EMPRESA <span class="req">*</span></label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" required autocomplete="organization">
+              <span class="field-error" id="erroEmpresa"></span>
+            </div>
+            <div class="form-group">
+              <label for="segmento">SEGMENTO DO NEGÓCIO</label>
+              <input type="text" id="segmento" name="segmento" placeholder="Clínica, restaurante, e-commerce...">
+            </div>
+            <div class="form-group">
+              <label for="faturamento">FATURAMENTO MENSAL <span class="req">*</span></label>
+              <select id="faturamento" name="faturamento" required>
+                <option value="" disabled selected>Selecione a faixa</option>
+                <option value="ate-10k">Até R$ 10.000</option>
+                <option value="10k-50k">R$ 10.000 – R$ 50.000</option>
+                <option value="50k-150k">R$ 50.000 – R$ 150.000</option>
+                <option value="150k-500k">R$ 150.000 – R$ 500.000</option>
+                <option value="acima-500k">Acima de R$ 500.000</option>
+              </select>
+              <span class="field-error" id="erroFaturamento"></span>
+            </div>
+            <div class="form-group">
+              <label for="gargalo">O QUE ESTÁ TRAVANDO O RESULTADO HOJE?</label>
+              <textarea id="gargalo" name="gargalo" placeholder="Opcional · contexto curto" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Agendar diagnóstico</button>
+            <p class="form-caption">Resposta em até 1 dia útil. Os dados são tratados conforme a LGPD e usados só para retorno comercial.</p>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <div class="success-checkmark">✓</div>
+            <h3>Recebemos sua solicitação!</h3>
+            <p>Entraremos em contato em até 1 dia útil.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== SEÇÃO 11 — FOOTER ===== -->
+  <footer class="section-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-2048x513.webp" alt="X Performance Digital" class="footer-logo-img">
+        </div>
+        <p class="footer-tagline">SISTEMA · PERFORMANCE · ESCALA</p>
+        <p class="footer-desc">Sistema de crescimento de receita para PMEs e negócios locais. Tráfego, UI/UX Design, desenvolvimento, SEO/GEO e automação com IA, tudo integrado.</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-label">NAVEGAR</p>
+        <nav class="footer-nav">
+          <a href="#solucoes">Soluções</a>
+          <a href="#sobre">A X Performance</a>
+          <a href="#fundadores">Fundadores</a>
+          <a href="#atributos">Atributos</a>
+          <a href="#cases">Cases</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-label">CONTATO</p>
+        <div class="footer-contacts">
+          <a href="mailto:contato@xperformancedigital.com.br">contato@xperformancedigital.com.br</a>
+          <a href="https://wa.me/5585988405521" target="_blank" rel="noopener">WhatsApp · (85) 9 8840-5521</a>
+          <a href="https://instagram.com/xperformancedigital" target="_blank" rel="noopener">@xperformancedigital</a>
+          <span>Fortaleza · CE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 X Performance Digital · CNPJ [CNPJ AQUI]</span>
+        <div class="footer-bottom-right">
+          <a href="#">Privacidade</a>
+          <span>·</span>
+          <a href="#">Termos</a>
+          <span class="footer-sep">|</span>
+          <span>Feito em Fortaleza · atuação nacional</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <a href="https://wa.me/5585988405521" target="_blank" rel="noopener" class="wpp-float" aria-label="Falar com a X Performance no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wpp-float-text">Falar com a X Performance</span>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
